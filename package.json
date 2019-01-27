@@ -1,0 +1,27 @@
+{
+  "name": "300-words-a-day",
+  "version": "1.0.0",
+  "description": "A 200wordsaday.com offline clone, basically. 🙂",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foo-dogsquared/300-words-a-day.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/foo-dogsquared/300-words-a-day/issues"
+  },
+  "homepage": "https://github.com/foo-dogsquared/300-words-a-day#readme",
+  "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.3.1",
+    "jest": "24.0.0",
+    "sass": "1.16.1"
+  }
+}
