@@ -4,7 +4,9 @@
   "description": "A 200wordsaday.com offline clone, basically. 🙂",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss:watch": "sass --watch ./style/main.scss ./public/main.scss --no-source-map",
+    "js:build": "babel ./scripts/*.js --out-file ./public/main.js --minified --no-comments"
   },
   "repository": {
     "type": "git",
