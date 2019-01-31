@@ -1,0 +1,10 @@
+extends layout/default
+
+block content
+    h1 #{res.statusCode}
+    if (res.statusCode === 404)
+        h2 Resource not found
+    else if (res.statusCode === 500)
+        h2 Bad server code
+    else
+        h2 Unknown error? Maybe... 🤔
