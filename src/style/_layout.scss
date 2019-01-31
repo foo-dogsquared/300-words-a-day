@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $base-margin-width auto;
+    max-width: $max-width;
+}
+
+.markdown-editor {
+    border: 2px black solid;
+    height: 6em;
+    max-height: 6em;
+    padding: 5px;
+    overflow: auto;
+}
+
+.social-icons {
+    width: 32px;
+    height: auto;
+    fill: black;
+}

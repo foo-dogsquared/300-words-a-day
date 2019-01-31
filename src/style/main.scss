@@ -1,0 +1,22 @@
+$brand-color-1: #5998c5;
+$brand-color-1-light: lighten($brand-color-1, 15%);
+$brand-color-1-dark: darken($brand-color-1, 15%);
+
+$brand-color-2: #cfffb0;
+$brand-color-2-light: lighten($brand-color-2, 15%);
+$brand-color-2-dark: darken($brand-color-2, 15%);
+
+$brand-color-3: #fff689;
+$brand-color-3-light: lighten($brand-color-3, 15%);
+$brand-color-3-dark: darken($brand-color-3, 15%);
+
+$base-margin-width: 20px;
+$base-font-size: 18px;
+$base-font-family: "";
+
+$max-width: 850px;
+
+@import
+    "base",
+    "layout"
+;
