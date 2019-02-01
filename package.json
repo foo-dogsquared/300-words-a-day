@@ -2,11 +2,19 @@
   "name": "300-words-a-day",
   "version": "1.0.0",
   "description": "A 200wordsaday.com offline clone, basically. 🙂",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "scss:watch": "sass --watch ./style/main.scss ./public/main.scss --no-source-map",
-    "js:build": "babel ./scripts/*.js --out-file ./public/main.js --minified --no-comments"
+    "prestart": "npm run build",
+    "start": "node server",
+    "prewatch": "npm run build",
+    "watch": "nodemon server.js",
+    "pretest": "npm run js:build",
+    "test": "jest",
+    "build": "npm run scss:build && npm run js:build && npm run sw:build",
+    "scss:watch": "sass --watch ./src/style/main.scss ./public/css/main.css --no-source-map",
+    "scss:build": "sass ./src/style/main.scss ./public/css/main.css --no-source-map",
+    "js:build": "babel ./src/client/*.js --out-file ./public/js/main.js --minified --no-comments",
+    "sw:build": "node build-service-worker.js"
   },
   "repository": {
     "type": "git",
@@ -23,12 +31,17 @@
     "@babel/cli": "7.2.3",
     "@babel/core": "7.2.2",
     "@babel/preset-env": "7.3.1",
+    "browser-sync": "2.26.3",
     "jest": "24.0.0",
+    "nodemon": "1.18.9",
     "sass": "1.16.1"
   },
   "dependencies": {
     "express": "4.16.4",
+    "localforage": "1.7.3",
+    "morgan": "1.9.1",
     "pug": "2.0.3",
-    "sw-precache": "5.2.1"
+    "workbox-build": "3.6.3",
+    "workbox-sw": "3.6.3"
   }
 }
