@@ -1,3 +1,20 @@
+@font-face {
+    font-family: "TeX Gyre Schola";
+    src: url("../fonts/TeXGyreSchola-Regular.eot") format("eot"),
+    url("../fonts/TeXGyreSchola-Regular.otf") format("otf"),
+    url("../fonts/TeXGyreSchola-Regular.ttf") format("ttf"),
+    url("../fonts/TeXGyreSchola-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "TeX Gyre Schola";
+    src: url("../fonts/TeXGyreSchola-Italic.eot") format("eot"),
+    url("../fonts/TeXGyreSchola-Italic.otf") format("otf"),
+    url("../fonts/TeXGyreSchola-Italic.ttf") format("ttf"),
+    url("../fonts/TeXGyreSchola-Italic.woff") format("woff");
+    font-style: italic;
+}
+
 $brand-color-1: #5998c5;
 $brand-color-1-light: lighten($brand-color-1, 15%);
 $brand-color-1-dark: darken($brand-color-1, 15%);
@@ -12,7 +29,10 @@ $brand-color-3-dark: darken($brand-color-3, 15%);
 
 $base-margin-width: 20px;
 $base-font-size: 18px;
-$base-font-family: "";
+$base-font-family: "TeX Gyre Schola", "Georgia", "Times", serif;
+
+$on-tablet: 750px;
+$on-phone: 550px;
 
 $max-width: 850px;
 

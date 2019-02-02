@@ -1,21 +1,53 @@
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: $base-margin-width auto;
+    margin: 0 auto;
     max-width: $max-width;
 }
 
-.markdown-editor {
-    border: 2px black solid;
-    height: 6em;
-    max-height: 6em;
-    padding: 5px;
-    overflow: auto;
+.header, .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (max-width: $on-tablet) {
+        flex-flow: column;
+
+        > * {margin: 0; margin-bottom: $base-margin-width/2;}
+        > *:first-child {margin-top: $base-margin-width/2;}
+    }
+}
+
+.main {
+    width: 95%;
+}
+
+.header-navbar {
+    > * {margin: 0 $base-margin-width;}
+}
+
+.header-appname {> * {text-decoration: none;}}
+
+.header-icon {
+    height: 1em;
+    width: 1em;
+}
+
+.social-links {
+    > * {margin: 0 $base-margin-width;}
 }
 
 .social-icons {
     width: 32px;
-    height: auto;
+    height: 32px;
     fill: black;
+}
+
+#markdown-editor {
+    border: 2px black solid;
+    height: 10em;
+    padding: 5px;
+    overflow: auto;
+    resize: none;
+
+    &:focus {
+        background: whitesmoke;
+    }
 }
