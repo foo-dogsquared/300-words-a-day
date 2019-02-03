@@ -1,10 +1,14 @@
-html, body {height: 100%}
+html, body {
+    min-height: 100%;
+    height: 100%;
+}
 
 body {
+    background: url($graph-paper-background);
     margin: 0;
     padding: 0;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     font-size: $base-font-size;
     font-family: $base-font-family;
 
@@ -23,10 +27,6 @@ a {
 }
 
 header, footer {padding: $base-margin-width/2;}
-
-header {
-    background: linear-gradient(330deg, $brand-color-1-dark, $brand-color-1, $brand-color-1-light);
-}
 
 main {
     display: flex;

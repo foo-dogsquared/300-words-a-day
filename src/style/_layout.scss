@@ -15,19 +15,30 @@
     }
 }
 
-.main {
-    width: 95%;
-}
+.main {width: 95%;}
 
 .header-navbar {
     > * {margin: 0 $base-margin-width;}
 }
 
-.header-appname {> * {text-decoration: none;}}
+.header-appname {
+    font-size: 1.5em;
+
+    > * {text-decoration: none;}
+}
 
 .header-icon {
     height: 1em;
     width: 1em;
+}
+
+.number-counter {
+    display: flex;
+    justify-content: space-around;
+
+    @media screen and (max-width: $on-tablet) {
+        flex-flow: column wrap;
+    }
 }
 
 .social-links {
@@ -41,7 +52,7 @@
 }
 
 #markdown-editor {
-    border: 2px black solid;
+    border: $base-border-style;
     height: 10em;
     padding: 5px;
     overflow: auto;
@@ -51,3 +62,15 @@
         background: whitesmoke;
     }
 }
+
+#markdown-preview {
+    border: $base-border-style;
+    height: 10em;
+    padding: 5px;
+    overflow: auto;
+
+    > *:first-child {margin-top: 0;}
+}
+
+.display {display: block;}
+.no-display {display: none;}
