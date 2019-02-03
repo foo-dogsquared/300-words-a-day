@@ -10,10 +10,14 @@
     "watch": "nodemon server.js",
     "pretest": "npm run js:build",
     "test": "jest",
-    "build": "npm run scss:build && npm run js:build && npm run sw:build",
-    "scss:watch": "sass --watch ./src/style/main.scss ./public/css/main.css --no-source-map",
+    "build": "npm run scss:build && npm run create:shell && npm run sw:build && npm run cp:libs && npm run cp:assets && npm run js:build ",
+    "cp:libs": "cp ./node_modules/localforage/dist/localforage.min.js ./public/js/localforage.min.js && cp ./node_modules/marked/marked.min.js ./public/js/marked.min.js",
+    "cp:assets": "cp -r ./assets/* ./public/",
+    "create:shell": "mkdirp public/js && mkdirp public/css && mkdirp public/img && mkdirp public/fonts",
     "scss:build": "sass ./src/style/main.scss ./public/css/main.css --no-source-map",
-    "js:build": "babel ./src/client/*.js --out-file ./public/js/main.js --minified --no-comments",
+    "scss:watch": "sass --watch ./src/style/main.scss ./public/css/main.css --no-source-map",
+    "js:build": "babel ./src/client/*.js --out-file ./public/js/main.js --no-comments",
+    "js:watch": "babel --watch ./src/client/*.js --out-file ./public/js/main.js --no-comments",
     "sw:build": "cp ./src/service_worker/service_worker_installer.js ./public/js/service_worker_installer.js && cp ./src/service_worker/service_worker.js ./public/service_worker.js"
   },
   "repository": {
@@ -33,12 +37,14 @@
     "@babel/preset-env": "7.3.1",
     "browser-sync": "2.26.3",
     "jest": "24.0.0",
+    "mkdirp": "0.5.1",
     "nodemon": "1.18.9",
     "sass": "1.16.1"
   },
   "dependencies": {
     "express": "4.16.4",
     "localforage": "1.7.3",
+    "marked": "0.6.0",
     "morgan": "1.9.1",
     "pug": "2.0.3"
   }
