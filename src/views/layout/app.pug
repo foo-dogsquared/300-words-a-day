@@ -7,9 +7,17 @@ block content
                 p Streak:
                 p#day-streaks
     .title
-    #markdown-editor(contenteditable="true")
-    .number-of-words
-    .number-of-characters
+    .markdown
+        .screen#editor.display
+            .feature-indicator Markdown editor
+            #markdown-editor(contenteditable="true")
+        .screen#preview.no-display
+            .feature-indicator Markdown preview
+            #markdown-preview
+    .number-counter
+        .number-of-words
+        button.toggle-preview Toggle Preview
+        .number-of-characters
     .previous-notes-container
         //- inside of the previous notes container is the notes from previous dates
         //- the app will list all of the notes
