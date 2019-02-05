@@ -15,10 +15,16 @@ const cache_files = {
     icon_original_size: "/img/icon-original-size.png",
     js: "/js/main.js",
     offline: "/offline",
-    fonts_woff: "/fonts/TeXGyreSchola-Regular.woff",
-    fonts_ttf: "/fonts/TeXGyreSchola-Regular.ttf",
-    fonts_otf: "/fonts/TeXGyreSchola-Regular.otf",
-    fonts_eot: "/fonts/TeXGyreSchola-Regular.eot"
+    main_font_woff: "/fonts/TeXGyreSchola-Regular.woff",
+    main_font_ttf: "/fonts/TeXGyreSchola-Regular.ttf",
+    main_font_otf: "/fonts/TeXGyreSchola-Regular.otf",
+    main_font_eot: "/fonts/TeXGyreSchola-Regular.eot",
+    main_font_italic_woff: "/fonts/TeXGyreSchola-Italic.woff",
+    main_font_italic_ttf: "/fonts/TeXGyreSchola-Italic.ttf",
+    main_font_italic_otf: "/fonts/TeXGyreSchola-Italic.otf",
+    main_font_italic_eot: "/fonts/TeXGyreSchola-Italic.eot",
+    localforage: "/js/localforage.min.js",
+    marked: "/js/marked.min.js"
 };
 
 // dynamically adding the valid routes into the cache files list
@@ -65,7 +71,9 @@ self.addEventListener("fetch", function(event) {
         event.respondWith(
             fetch(event.request)
             .then(function(response) {
-                caches.add(event.request);
+                caches.open(cache_folder_name)
+                .then(cache => cache.put(event.request, response))
+                return response;
             })
             .catch(function(error) {
                 return caches.match(event.request);
