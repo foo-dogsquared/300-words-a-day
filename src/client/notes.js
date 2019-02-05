@@ -88,10 +88,16 @@ localforage.getItem(APP_AUTOSAVE_SETTING)
     console.error(error);
 })
 
-    
 notes_instance.length()
 .then(function(length) {
+    // giving the feedback for the number of notes
+    const notes_counter = document.querySelector(".notes-counter");
+    notes_counter.textContent = `You have ${length} notes, so far.`;
+
+    // until there's a note, there won't be any additional feedbacks
     if (!length) return;
+
+    // retrieve the latest entry and put it into the editor box
     notes_instance.getItem(Number(length).toString())
     .then(function(note_object) {
         if (!note_object) return;
@@ -105,4 +111,50 @@ notes_instance.length()
     .catch(function(error) {
         console.error(error);
     })
+
+    // checking if the streak is still going and update it accordingly
+    notes_instance.getItem(Number(length - 1).toString())
+    .then(function(note_object) {
+        // getting the current date
+        const current_date = new Date();
+
+        // setting the date to the previous day
+        current_date.setDate(current_date.getDate() - 1);
+        if (!note_object) localforage.setItem(APP_NOTE_DAY_STREAK, 0);
+        else if (current_date.toDateString() === note_object.date.toDateString()) localforage.getItem(APP_NOTE_DAY_STREAK).then(days => {localforage.setItem(APP_NOTE_DAY_STREAK, days++)});
+        else localforage.setItem(APP_NOTE_DAY_STREAK, 0);
+    })
+    .catch(function(error) {
+        console.error(error);
+    })
+
+    // retrieve the entries before the latest and render them
+    const previous_notes_box = document.querySelector(".previous-notes-container");
+    if (length > 1) {
+        notes_instance.iterate(function(note_object, key, iteration_index) {
+            if (iteration_index === length) return;
+            // TODO: create the html template for the previous notes
+            const note_container = document.createElement("div");
+            note_container.classList.add("note-container");
+
+            const note_date = document.createElement("div");
+            note_date.classList.add("note-date");
+            note_date.textContent = note_object.date.toDateString();
+
+            const note_content = document.createElement("div");
+            note_content.classList.add("note-content");
+            note_content.innerHTML = marked(note_object.content);
+
+            const note_number_of_words = document.createElement("div");
+            note_number_of_words.classList.add("note-word-count");
+            note_number_of_words.textContent = `${note_object.content.match(/\S+/g).length} words`;
+
+            note_container.appendChild(note_date);
+            note_container.appendChild(note_content);
+            note_container.appendChild(note_number_of_words);
+            previous_notes_box.appendChild(note_container);
+        })
+    }
+
+    
 })

@@ -21,14 +21,14 @@ function convert_to_regex_string(string) {
 }
 
 function surround_text(text_string, surrounding_string) {
+    if (text_string.trim() === text_string && !Boolean(text_string.trim())) return "";
     // also it could remove the surrounding string if the string was already surrounded
     const surrounding_string_regex_string = convert_to_regex_string(surrounding_string);
-    const surrounding_string_regex = new RegExp(`^\\s*(${surrounding_string_regex_string}(.+)${surrounding_string_regex_string}\\s*)$`);
+    const surrounding_string_regex = new RegExp(`^\\s*(${surrounding_string_regex_string}(.+)${surrounding_string_regex_string})\\s*$`);
     const regex_match = text_string.match(surrounding_string_regex);
     if (regex_match) return text_string.replace(regex_match[1], regex_match[2]);
     else {
-        const non_trimmed_string_regex = new RegExp(`^\\s*(.+)\\s*$`);
-        const trimmed_string = text_string.match(non_trimmed_string_regex)[1];
+        const trimmed_string = text_string.trim();
         const result_string = `${surrounding_string}${trimmed_string}${surrounding_string}`;
         return text_string.replace(trimmed_string, result_string);
     };

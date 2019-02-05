@@ -8,6 +8,7 @@ const APP_NOTES_LOCATION_STRING = `${APP_NAME}_notes`;
 // autosave settings
 const APP_AUTOSAVE_SETTING = `${APP_NAME}_autosync_interval`;
 const APP_AUTOSAVE_INTERVAL_DEFAULT_VALUE = 60000; // 60 seconds
+const APP_NOTE_DAY_STREAK = `${APP_NAME}_day_streak`;
 
 // markdown flavor settings
 const APP_MARKDOWN_FLAVOR_SETTING = `${APP_NAME}_markdown_flavor`;
