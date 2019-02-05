@@ -16,7 +16,7 @@
     "create:shell": "mkdirp public/js && mkdirp public/css && mkdirp public/img && mkdirp public/fonts",
     "scss:build": "sass ./src/style/main.scss ./public/css/main.css --no-source-map",
     "scss:watch": "sass --watch ./src/style/main.scss ./public/css/main.css --no-source-map",
-    "js:concat": "concat -o ./client_app.js ./src/client/constants.js ./src/client/notes.js ./src/client/keyboard_events.js",
+    "js:concat": "concat -o ./client_app.js ./src/client/constants.js ./src/client/date.js ./src/client/notes.js ./src/client/keyboard_events.js",
     "js:watch": "sane \"npm run js:concat && npm run js:build\" --glob=src/client/*.js",
     "js:build": "babel client_app.js --out-file ./public/js/main.js --no-comments",
     "sw:build": "cp ./src/service_worker/service_worker_installer.js ./public/js/service_worker_installer.js && cp ./src/service_worker/service_worker.js ./public/service_worker.js"
