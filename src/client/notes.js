@@ -14,7 +14,7 @@ function indicate_words_and_characters() {
 
     const editor_characters_length = editor_content.length;
     number_of_characters_container.textContent = `${(editor_characters_length <= 0) ? "no" : editor_characters_length} character${(editor_characters_length <= 1) ? "" : "s"}`;
-} 
+}
 
 markdown_text_box.addEventListener("input", function(event) {
     indicate_words_and_characters();
@@ -38,31 +38,66 @@ toggle_preview_button.addEventListener("click", function(event) {
     }
 });
 
+
+
 // it's the current date without considering the hours, minutes, 
 // and the seconds (and milliseconds) 
 // but we're keeping the whole thing 
 const current_date = new Date();
 
+localforage.config({
+    name: APP_DB_NAME,
+    storeName: APP_SETTINGS_INSTANCE_NAME
+});
+
+
+const notes_instance = localforage.createInstance({
+    name: APP_DB_NAME,
+    storeName: APP_NOTES_LOCATION_STRING
+});
+
+class notes {
+    constructor(content, date = new Date()) {
+        this.date = date;
+        this.content = content;
+    }
+}
+
 function autosave() {
     console.log("Autosaving content...");
-    localforage.setItem(current_date.toDateString(), markdown_text_box.innerText);
+    notes_instance.length()
+    .then(function(length) {
+        // if there's no notes, then start the note train with ID = 1
+        // else get the latest notes and check for the latest entry
+        // if the latest entry is still on the current day, then update the note
+        // else, then most likely it is a new date and should be created with another note
+        if (length <= 0 || !length) notes_instance.setItem("1", new notes(markdown_text_box.innerText));
+        else notes_instance.getItem(Number(length).toString()).then(function(value) {
+            if (value.date.toDateString() === new Date().toDateString()) notes_instance.setItem(Number(length).toString(), new notes(markdown_text_box.innerText));
+            else notes_instance.setItem(Number(length + 1).toString(), new notes(markdown_text_box.innerText))
+        })
+    })
 }
 
 localforage.getItem(APP_AUTOSAVE_SETTING)
-    .then(function(value) {
-        if (!value) setInterval(autosave, APP_AUTOSAVE_INTERVAL_DEFAULT_VALUE);
-        else setInterval(autosave, value);
-    })
-    .catch(function(error) {
-        console.error(error);
-    })
+.then(function(value) {
+    if (!value) setInterval(autosave, APP_AUTOSAVE_INTERVAL_DEFAULT_VALUE);
+    else setInterval(autosave, value);
+})
+.catch(function(error) {
+    console.error(error);
+})
 
-localforage.getItem(current_date.toDateString())
-    .then(function(value) {
-        if (!value) return;
+    
+notes_instance.length()
+.then(function(length) {
+    if (!length) return;
+    notes_instance.getItem(Number(length).toString())
+    .then(function(note_object) {
+        if (!note_object) return;
         else {
-            markdown_text_box.innerText = value;
-            markdown_preview_box.innerHTML = marked(value);
+            markdown_text_box.innerText = note_object.content;
+            markdown_preview_box.innerHTML = marked(note_object.content);
             const input_event = new Event("input");
             markdown_text_box.dispatchEvent(input_event);
         }
@@ -70,3 +105,4 @@ localforage.getItem(current_date.toDateString())
     .catch(function(error) {
         console.error(error);
     })
+})
