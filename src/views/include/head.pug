@@ -1,0 +1,20 @@
+if replace_title
+    title #{title}
+else
+    title #{title} | #{app_configuration.app_name}
+link(rel="stylesheet", href="/css/main.css")
+link(rel="icon", type="image/jpg", sizes="32x32", href="/img/icon.png")
+link(href="https://fonts.googleapis.com/css?family=Fira+Sans|Libre+Baskerville" rel="stylesheet")
+
+// meta tags
+meta(http-equiv="X-UA-Compatible", content="IE=7")
+meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+meta(name="viewport", content="width=device-width, initial-scale=1.0")
+meta(name="author", content=app_configuration.author + " (" + app_configuration.author_alias + ")")
+meta(name="keywords", content=app_configuration.app_keywords.join(","))
+meta(name="description", content=app_configuration.app_description)
+meta(name="application-name", content=app_configuration.app_name)
+meta(property="og:description", content=app_configuration.app_description)
+meta(property="og:site_name", content=app_configuration.app_name)
+meta(property="og:image", content="/assets/icon.jpg")
+

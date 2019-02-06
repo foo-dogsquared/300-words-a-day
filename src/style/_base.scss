@@ -1,0 +1,41 @@
+html, body {
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    background: url($graph-paper-background);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: $base-font-size;
+    font-family: $base-font-family;
+
+    @media screen and (max-width: $on-phone) {
+        font-size: $base-font-size * 0.95;
+    }
+}
+
+h1 {font-size: 1.6em;}
+h2 {font-size: 1.3em;}
+h3 {font-size: 1.15em;}
+
+a {
+    color: unset;
+    text-decoration: underline black;
+}
+
+header, footer {padding: $base-margin-width/2;}
+
+main {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 2;
+    margin: 0 auto;
+    width: 100%;
+}
+
+footer {
+    background: linear-gradient(60deg, $brand-color-3-dark, $brand-color-3, $brand-color-3-light)
+}

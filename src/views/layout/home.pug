@@ -1,0 +1,18 @@
+extends default
+
+mixin feature_block(feature_header, feature_description, feature_img_alt, feature_img)
+    .feature-block
+        .feature-text-box
+            h3.feature-header= feature_header
+            p.feature-description= feature_description
+        img.feature-block-image(alt=feature_img_alt, src=feature_img)
+
+block content
+    h1 #[img(src="/img/icon-original-size.png", class="header-icon")] #{app_configuration.app_name}
+    h2 #{app_configuration.app_description} 
+    p Also it is entirely #[a(href=app_configuration.app_repo_link, target="_blank") open source] so you can create a variant or a fork of your own, if you choose. 😁
+    p You can also suggest features and improvement at the #[a(href=app_configuration.app_issues_link, target="_blank") issue tracker]. For more information about the developer, #{app_configuration.author}, you can visit his site at #[a(href=app_configuration.author_link) this link].
+    h2 Features
+    +feature_block("An offline app", "The app can work entirely offline once you visited the site (well, you already did). This is made possible with the use of service workers.")
+    +feature_block("A personal coach for your notes", "Well, it is the entire appeal of the app. It will serve as a coach to make sure you spit out at least 300 words everyday (in the non-violent way, of course). Again, this is made possible with service workers.")
+    +feature_block("An experimental app", "Eh... To be honest, this is mostly an experiment for programming with service workers and routing offline. I've got nothing to say more about this app so I added this block, lol.")

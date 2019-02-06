@@ -1,0 +1,133 @@
+// general styles
+.wrapper {
+    margin: 0 auto;
+    max-width: $max-width;
+}
+
+.header, .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (max-width: $on-tablet) {
+        flex-flow: column;
+
+        > * {margin: 0; margin-bottom: $base-margin-width/2;}
+        > *:first-child {margin-top: $base-margin-width/2;}
+    }
+}
+
+.main {width: 95%;}
+
+.header-navbar {
+    > * {margin: 0 $base-margin-width;}
+}
+
+.header-appname {
+    font-size: 1.5em;
+
+    > * {text-decoration: none;}
+}
+
+.header-icon {
+    height: 1em;
+    width: 1em;
+}
+
+.social-links {
+    > * {margin: 0 $base-margin-width;}
+}
+
+.social-icons {
+    width: 32px;
+    height: 32px;
+    fill: black;
+}
+
+// elements found in the home
+.feature-block {
+    display: flex;
+    
+    &:nth-of-type(odd) {flex-flow: row-reverse nowrap;}
+    &:nth-of-type(even) {flex-flow: row nowrap;}
+}
+
+$feature-text-box-width: 50%;
+$feature-block-img-width: 100% - $feature-text-box-width;
+
+.feature-text-box {width: $feature-text-box-width;}
+
+.feature-block-img {width: $feature-block-img-width;}
+
+// elements found in the app
+.number-counter {
+    display: flex;
+    justify-content: space-around;
+
+    @media screen and (max-width: $on-tablet) {
+        flex-flow: column wrap;
+    }
+}
+#markdown-editor {
+    border: $base-border-style;
+    height: 10em;
+    padding: 5px;
+    overflow: auto;
+    resize: none;
+
+    &:focus {
+        background: whitesmoke;
+    }
+}
+
+#markdown-preview {
+    border: $base-border-style;
+    height: 10em;
+    padding: 5px;
+    overflow: auto;
+
+    > *:first-child {margin-top: 0;}
+}
+
+.display {display: block;}
+.no-display {display: none;}
+
+.previous-notes-container {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+    min-width: 100%;
+    height: 20em;
+    margin: 1em auto;
+
+    @media screen and (max-width: $on-phone) {
+        flex-flow: column wrap;
+        height: unset;
+    }
+}
+
+.note-container {
+    min-width: $previous-note-width;
+    max-width: $previous-note-width;
+    border: $base-border-style;
+    margin: 2em;
+    padding: 1em;
+    overflow: auto;
+
+    &:first-of-type {margin-left: 0;}
+
+    @media screen and (max-width: $on-phone) {
+        max-width: unset;
+        min-width: unset;
+        margin: 1em auto;
+        height: 10em;
+        width: 80%;
+
+        &:first-of-type {margin-left: auto;}
+    }
+}
+
+.note-content {
+    margin: 1em auto;
+    border-top: $base-border-style;
+    border-bottom: $base-border-style;
+}
