@@ -4,7 +4,6 @@
   "description": "A 200wordsaday.com offline clone, basically. 🙂",
   "main": "server.js",
   "scripts": {
-    "prestart": "npm run build",
     "start": "node server",
     "prewatch": "npm run build",
     "watch": "nodemon server.js",
