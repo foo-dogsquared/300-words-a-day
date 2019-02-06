@@ -1,7 +1,7 @@
 const app = require("./src/app");
 const app_constants = require("./src/app_constants");
 
-const port = app_constants.port || 7777;
+const port = process.env.PORT || 7777;
 
 const server = app.listen(port, function() {
     const opened_port = server.address().port;
