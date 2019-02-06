@@ -81,6 +81,3 @@ self.addEventListener("fetch", function(event) {
         );
     }
 });
-
-// offline routing
-

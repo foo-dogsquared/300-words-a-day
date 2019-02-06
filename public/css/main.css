@@ -1,0 +1,216 @@
+@font-face {
+  font-family: "TeX Gyre Schola";
+  src: url("../fonts/TeXGyreSchola-Regular.eot") format("eot"), url("../fonts/TeXGyreSchola-Regular.otf") format("otf"), url("../fonts/TeXGyreSchola-Regular.ttf") format("ttf"), url("../fonts/TeXGyreSchola-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "TeX Gyre Schola";
+  src: url("../fonts/TeXGyreSchola-Italic.eot") format("eot"), url("../fonts/TeXGyreSchola-Italic.otf") format("otf"), url("../fonts/TeXGyreSchola-Italic.ttf") format("ttf"), url("../fonts/TeXGyreSchola-Italic.woff") format("woff");
+  font-style: italic;
+}
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b0ffb4' fill-opacity='0.79'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 18px;
+  font-family: "TeX Gyre Schola", "Georgia", "Times", serif;
+}
+@media screen and (max-width: 550px) {
+  body {
+    font-size: 17.1px;
+  }
+}
+
+h1 {
+  font-size: 1.6em;
+}
+
+h2 {
+  font-size: 1.3em;
+}
+
+h3 {
+  font-size: 1.15em;
+}
+
+a {
+  color: unset;
+  text-decoration: underline black;
+}
+
+header, footer {
+  padding: 10px;
+}
+
+main {
+  display: flex;
+  flex-flow: column wrap;
+  flex-grow: 2;
+  margin: 0 auto;
+  width: 100%;
+}
+
+footer {
+  background: linear-gradient(60deg, #fff03d, #fff689, #fffcd6);
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 850px;
+}
+
+.header, .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 750px) {
+  .header, .footer {
+    flex-flow: column;
+  }
+  .header > *, .footer > * {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .header > *:first-child, .footer > *:first-child {
+    margin-top: 10px;
+  }
+}
+
+.main {
+  width: 95%;
+}
+
+.header-navbar > * {
+  margin: 0 20px;
+}
+
+.header-appname {
+  font-size: 1.5em;
+}
+.header-appname > * {
+  text-decoration: none;
+}
+
+.header-icon {
+  height: 1em;
+  width: 1em;
+}
+
+.social-links > * {
+  margin: 0 20px;
+}
+
+.social-icons {
+  width: 32px;
+  height: 32px;
+  fill: black;
+}
+
+.feature-block {
+  display: flex;
+}
+.feature-block:nth-of-type(odd) {
+  flex-flow: row-reverse nowrap;
+}
+.feature-block:nth-of-type(even) {
+  flex-flow: row nowrap;
+}
+
+.feature-text-box {
+  width: 50%;
+}
+
+.feature-block-img {
+  width: 50%;
+}
+
+.number-counter {
+  display: flex;
+  justify-content: space-around;
+}
+@media screen and (max-width: 750px) {
+  .number-counter {
+    flex-flow: column wrap;
+  }
+}
+
+#markdown-editor {
+  border: 2px black solid;
+  height: 10em;
+  padding: 5px;
+  overflow: auto;
+  resize: none;
+}
+#markdown-editor:focus {
+  background: whitesmoke;
+}
+
+#markdown-preview {
+  border: 2px black solid;
+  height: 10em;
+  padding: 5px;
+  overflow: auto;
+}
+#markdown-preview > *:first-child {
+  margin-top: 0;
+}
+
+.display {
+  display: block;
+}
+
+.no-display {
+  display: none;
+}
+
+.previous-notes-container {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: auto;
+  min-width: 100%;
+  height: 20em;
+  margin: 1em auto;
+}
+@media screen and (max-width: 550px) {
+  .previous-notes-container {
+    flex-flow: column wrap;
+    height: unset;
+  }
+}
+
+.note-container {
+  min-width: 450px;
+  max-width: 450px;
+  border: 2px black solid;
+  margin: 2em;
+  padding: 1em;
+  overflow: auto;
+}
+.note-container:first-of-type {
+  margin-left: 0;
+}
+@media screen and (max-width: 550px) {
+  .note-container {
+    max-width: unset;
+    min-width: unset;
+    margin: 1em auto;
+    height: 10em;
+    width: 80%;
+  }
+  .note-container:first-of-type {
+    margin-left: auto;
+  }
+}
+
+.note-content {
+  margin: 1em auto;
+  border-top: 2px black solid;
+  border-bottom: 2px black solid;
+}
