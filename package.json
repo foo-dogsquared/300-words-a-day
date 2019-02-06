@@ -10,7 +10,7 @@
     "watch": "nodemon server.js",
     "pretest": "npm run js:build",
     "test": "jest",
-    "build": "npm run scss:build && npm run create:shell && npm run sw:build && npm run cp:libs && npm run cp:assets && npm run js:concat && npm run js:build ",
+    "build": "npm run scss:build && npm run create:shell && npm run sw:build && npm run cp:libs && npm run cp:assets && npm run js:concat && npm run js:build",
     "cp:libs": "cp ./node_modules/localforage/dist/localforage.min.js ./public/js/localforage.min.js && cp ./node_modules/marked/marked.min.js ./public/js/marked.min.js",
     "cp:assets": "cp -r ./assets/* ./public/",
     "create:shell": "mkdirp public/js && mkdirp public/css && mkdirp public/img && mkdirp public/fonts",
@@ -39,16 +39,16 @@
     "browser-sync": "2.26.3",
     "concat": "1.0.3",
     "jest": "24.0.0",
-    "mkdirp": "0.5.1",
     "nodemon": "1.18.9",
-    "sane": "4.0.2",
-    "sass": "1.16.1"
+    "sane": "4.0.2"
   },
   "dependencies": {
     "express": "4.16.4",
     "localforage": "1.7.3",
     "marked": "0.6.0",
+    "mkdirp": "0.5.1",
     "morgan": "1.9.1",
-    "pug": "2.0.3"
+    "pug": "2.0.3",
+    "sass": "1.17.0"
   }
 }
