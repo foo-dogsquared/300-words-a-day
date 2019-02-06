@@ -10,6 +10,7 @@ exports.app_configuration = {
     app_name: "300 Words A Day",
     app_description: "An offline app that encourages you to take note every day, at least 300 words per day.",
     app_repo_link: "https://github.com/foo-dogsquared/300-words-a-day",
+    app_issues_link: "https://github.com/foo-dogsquared/300-words-a-day/issues",
     app_keywords: [
         "200wordsaday", 
         "300wordsaday", 

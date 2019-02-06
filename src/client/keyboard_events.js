@@ -33,6 +33,7 @@ function surround_text(text_string, surrounding_string) {
         return text_string.replace(trimmed_string, result_string);
     };
 }
+
 function preprend_text(text_string, prepending_string) {
     const text_string_trimmed = text_string.trim();
     const surrounding_string_regex_string = convert_to_regex_string(surrounding_string);
