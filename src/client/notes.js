@@ -1,40 +1,40 @@
-const markdown_text_container = document.querySelector("#editor");
-const markdown_preview_container = document.querySelector("#preview");
-const markdown_preview_box = document.querySelector("#markdown-preview");
-const markdown_text_box = document.querySelector("#markdown-editor");
-const number_of_words_container = document.querySelector(".number-of-words");
-const number_of_characters_container = document.querySelector(".number-of-characters");
-const toggle_preview_button = document.querySelector(".toggle-preview");
+const MARKDOWN_TEXT_CONTAINER = document.querySelector("#editor");
+const MARKDOWN_PREVIEW_CONTAINER = document.querySelector("#preview");
+const MARKDOWN_PREVIEW_BOX = document.querySelector("#markdown-preview");
+const MARKDOWN_TEXT_BOX = document.querySelector("#markdown-editor");
+const NUMBER_OF_WORDS_CONTAINER = document.querySelector(".number-of-words");
+const NUMBER_OF_CHARACTERS_CONTAINER = document.querySelector(".number-of-characters");
+const TOGGLE_PREVIEW_BUTTON = document.querySelector(".toggle-preview");
 let toggle_preview = false;
 
 function indicate_words_and_characters() {
-    const editor_content = markdown_text_box.innerText;
+    const editor_content = MARKDOWN_TEXT_BOX.innerText;
     const words = editor_content.match(/\S+/g);
-    number_of_words_container.textContent = `${(!words) ? "no" : words.length} word${(!words || (words.length <= 1)) ? "" : "s"}`;
+    NUMBER_OF_WORDS_CONTAINER.textContent = `${(!words) ? "no" : words.length} word${(!words || (words.length <= 1)) ? "" : "s"}`;
 
     const editor_characters_length = editor_content.length;
-    number_of_characters_container.textContent = `${(editor_characters_length <= 0) ? "no" : editor_characters_length} character${(editor_characters_length <= 1) ? "" : "s"}`;
+    NUMBER_OF_CHARACTERS_CONTAINER.textContent = `${(editor_characters_length <= 0) ? "no" : editor_characters_length} character${(editor_characters_length <= 1) ? "" : "s"}`;
 }
 
-markdown_text_box.addEventListener("input", function(event) {
+MARKDOWN_TEXT_BOX.addEventListener("input", function(event) {
     indicate_words_and_characters();
-    markdown_preview_box.innerHTML = marked(markdown_text_box.innerText);
+    MARKDOWN_PREVIEW_BOX.innerHTML = marked(MARKDOWN_TEXT_BOX.innerText);
 });
 
-toggle_preview_button.addEventListener("click", function(event) {
+TOGGLE_PREVIEW_BUTTON.addEventListener("click", function(event) {
     toggle_preview = !toggle_preview;
 
     if (toggle_preview) {
-        markdown_preview_container.classList.add("display");
-        markdown_preview_container.classList.remove("no-display");
-        markdown_text_container.classList.remove("display")
-        markdown_text_container.classList.add("no-display");
+        MARKDOWN_PREVIEW_CONTAINER.classList.add("display");
+        MARKDOWN_PREVIEW_CONTAINER.classList.remove("no-display");
+        MARKDOWN_TEXT_CONTAINER.classList.remove("display")
+        MARKDOWN_TEXT_CONTAINER.classList.add("no-display");
     }
     else {
-        markdown_text_container.classList.add("display");
-        markdown_text_container.classList.remove("no-display");
-        markdown_preview_container.classList.remove("display")
-        markdown_preview_container.classList.add("no-display");
+        MARKDOWN_TEXT_CONTAINER.classList.add("display");
+        MARKDOWN_TEXT_CONTAINER.classList.remove("no-display");
+        MARKDOWN_PREVIEW_CONTAINER.classList.remove("display")
+        MARKDOWN_PREVIEW_CONTAINER.classList.add("no-display");
     }
 });
 
@@ -71,10 +71,10 @@ function autosave() {
         // else get the latest notes and check for the latest entry
         // if the latest entry is still on the current day, then update the note
         // else, then most likely it is a new date and should be created with another note
-        if (length <= 0 || !length) notes_instance.setItem("1", new notes(markdown_text_box.innerText));
+        if (length <= 0 || !length) notes_instance.setItem("1", new notes(MARKDOWN_TEXT_BOX.innerText));
         else notes_instance.getItem(Number(length).toString()).then(function(value) {
-            if (value.date.toDateString() === new Date().toDateString()) notes_instance.setItem(Number(length).toString(), new notes(markdown_text_box.innerText));
-            else notes_instance.setItem(Number(length + 1).toString(), new notes(markdown_text_box.innerText))
+            if (value.date.toDateString() === new Date().toDateString()) notes_instance.setItem(Number(length).toString(), new notes(MARKDOWN_TEXT_BOX.innerText));
+            else notes_instance.setItem(Number(length + 1).toString(), new notes(MARKDOWN_TEXT_BOX.innerText))
         })
     })
 }
@@ -102,10 +102,10 @@ notes_instance.length()
     .then(function(note_object) {
         if (!note_object) return;
         else {
-            markdown_text_box.innerText = note_object.content;
-            markdown_preview_box.innerHTML = marked(note_object.content);
+            MARKDOWN_TEXT_BOX.innerText = note_object.content;
+            MARKDOWN_PREVIEW_BOX.innerHTML = marked(note_object.content);
             const input_event = new Event("input");
-            markdown_text_box.dispatchEvent(input_event);
+            MARKDOWN_TEXT_BOX.dispatchEvent(input_event);
         }
     })
     .catch(function(error) {
@@ -129,7 +129,7 @@ notes_instance.length()
     })
 
     // retrieve the entries before the latest and render them
-    const previous_notes_box = document.querySelector(".notes-collection");
+    const PREVIOUS_NOTES_BOX = document.querySelector(".notes-collection");
     if (length > 1) {
         notes_instance.iterate(function(note_object, key, iteration_index) {
             if (iteration_index === length) return;
@@ -154,14 +154,16 @@ notes_instance.length()
             note_container.appendChild(note_date);
             note_container.appendChild(note_content);
             note_container.appendChild(note_number_of_words);
-            previous_notes_box.appendChild(note_container);
+            PREVIOUS_NOTES_BOX.appendChild(note_container);
         })
     }
 })
 
-const previous_note_button = document.querySelector(".previous-note-button");
-const next_note_button = document.querySelector(".next-note-button");
-previous_note_button.addEventListener("click", function(event) {
+const PREVIOUS_NOTE_BUTTON = document.querySelector(".previous-note-button");
+const NEXT_NOTE_BUTTON = document.querySelector(".next-note-button");
+
+// getting the previous note to be shown
+PREVIOUS_NOTE_BUTTON.addEventListener("click", function(event) {
     const notes_collection = document.querySelector(".notes-collection");
     const rendered_note = document.querySelector(".note-container.display");
 
@@ -173,7 +175,8 @@ previous_note_button.addEventListener("click", function(event) {
     }
 })
 
-next_note_button.addEventListener("click", function(event) {
+// getting the next note to be shown
+NEXT_NOTE_BUTTON.addEventListener("click", function(event) {
     const notes_collection = document.querySelector(".notes-collection");
     const rendered_note = document.querySelector(".note-container.display");
 
