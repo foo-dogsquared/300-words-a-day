@@ -1,5 +1,8 @@
 script(src="/js/localforage.min.js")
 script(src="/js/marked.min.js")
-script(src="/js/service_worker_installer.js")
+if title === "300 Words A Day | An offline app that encourages you to take note every day, at least 300 words per day."
+    script(src="/js/service_worker_installer.js")
 if title === "App"
     script(src="/js/main.js")
+if title === "Notes"
+    script(src="/js/render_notes.js")
