@@ -188,6 +188,8 @@ notes_instance.length()
 
 const previous_note_button = document.querySelector(".previous-note-button");
 const next_note_button = document.querySelector(".next-note-button");
+
+// getting the previous note to be shown
 previous_note_button.addEventListener("click", function(event) {
     const notes_collection = document.querySelector(".notes-collection");
     const rendered_note = document.querySelector(".note-container.display");
@@ -200,6 +202,7 @@ previous_note_button.addEventListener("click", function(event) {
     }
 })
 
+// getting the next note to be shown
 next_note_button.addEventListener("click", function(event) {
     const notes_collection = document.querySelector(".notes-collection");
     const rendered_note = document.querySelector(".note-container.display");
