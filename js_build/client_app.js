@@ -156,13 +156,15 @@ notes_instance.length()
     })
 
     // retrieve the entries before the latest and render them
-    const previous_notes_box = document.querySelector(".previous-notes-container");
+    const previous_notes_box = document.querySelector(".notes-collection");
     if (length > 1) {
         notes_instance.iterate(function(note_object, key, iteration_index) {
             if (iteration_index === length) return;
             // TODO: create the html template for the previous notes
             const note_container = document.createElement("div");
             note_container.classList.add("note-container");
+            if (iteration_index === 1) note_container.classList.add("display");
+            else note_container.classList.add("no-display");
 
             const note_date = document.createElement("div");
             note_date.classList.add("note-date");
@@ -182,8 +184,35 @@ notes_instance.length()
             previous_notes_box.appendChild(note_container);
         })
     }
+})
 
-    
+const previous_note_button = document.querySelector(".previous-note-button");
+const next_note_button = document.querySelector(".next-note-button");
+
+// getting the previous note to be shown
+previous_note_button.addEventListener("click", function(event) {
+    const notes_collection = document.querySelector(".notes-collection");
+    const rendered_note = document.querySelector(".note-container.display");
+
+    if (rendered_note.previousElementSibling) {
+        rendered_note.classList.remove("display");
+        rendered_note.classList.add("no-display");
+        rendered_note.previousElementSibling.classList.remove("no-display");
+        rendered_note.previousElementSibling.classList.add("display");
+    }
+})
+
+// getting the next note to be shown
+next_note_button.addEventListener("click", function(event) {
+    const notes_collection = document.querySelector(".notes-collection");
+    const rendered_note = document.querySelector(".note-container.display");
+
+    if (rendered_note.nextElementSibling) {
+        rendered_note.classList.remove("display");
+        rendered_note.classList.add("no-display");
+        rendered_note.nextElementSibling.classList.remove("no-display");
+        rendered_note.nextElementSibling.classList.add("display");
+    }
 })
 
 const markdown_syntax = {

@@ -91,43 +91,26 @@ $feature-block-img-width: 100% - $feature-text-box-width;
 .display {display: block;}
 .no-display {display: none;}
 
-.previous-notes-container {
-    display: flex;
-    flex-flow: row nowrap;
-    overflow: auto;
-    min-width: 100%;
-    height: 20em;
-    margin: 1em auto;
-
-    @media screen and (max-width: $on-phone) {
-        flex-flow: column wrap;
-        height: unset;
-    }
-}
-
 .note-container {
-    min-width: $previous-note-width;
-    max-width: $previous-note-width;
     border: $base-border-style;
     margin: 2em;
     padding: 1em;
+    height: 20em;
     overflow: auto;
-
-    &:first-of-type {margin-left: 0;}
-
-    @media screen and (max-width: $on-phone) {
-        max-width: unset;
-        min-width: unset;
-        margin: 1em auto;
-        height: 10em;
-        width: 80%;
-
-        &:first-of-type {margin-left: auto;}
-    }
 }
 
 .note-content {
     margin: 1em auto;
     border-top: $base-border-style;
     border-bottom: $base-border-style;
+}
+
+.note-word-count {margin: 1em auto;}
+
+.preview-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+
+    > * {cursor: pointer; padding: 1em;}
 }

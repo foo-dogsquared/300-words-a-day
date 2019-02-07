@@ -62,8 +62,7 @@ self.addEventListener("fetch", function(event) {
     console.log(`Fetching for: ${event.request.url} at ${event.request.mode}`);
     // checking if the request is for the HTML files
     if (event.request.mode === "navigate" && notes_url.test(event.request.url) && Number(event.request.url.match(notes_param)[1])) {event.respondWith(caches.match(valid_routes.notes));}
-    else if ((event.request.mode === "navigate") 
-    && !is_valid_route(event.request.url, Object.values(valid_routes))) {
+    else if ((event.request.mode === "navigate") && !is_valid_route(event.request.url, Object.values(valid_routes))) {
         event.respondWith(
             fetch(event.request)
             .catch(function(error) {

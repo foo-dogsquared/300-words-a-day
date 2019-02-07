@@ -26,6 +26,7 @@ exports.app_configuration = {
         home: "/",
         app: "/app",
         settings: "/settings",
-        error: "/offline"
+        error: "/offline",
+        notes: "/note"
     }
 }

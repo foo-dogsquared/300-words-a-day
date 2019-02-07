@@ -28,6 +28,13 @@ home_router.get(app_configuration.app_routes.error, function(req, res, next) {
         title: `Whoops!`,
         app_configuration
     })
-})
+});
+
+home_router.get(app_configuration.app_routes.notes, function(req, res, next) {
+    res.render("layout/notes", {
+        title: `Notes`,
+        app_configuration
+    })
+});
 
 module.exports = home_router;
