@@ -5,7 +5,8 @@ const cache_folder_name = `${cache_name}-${cache_version}`;
 const valid_routes = {
     home: "/",
     app: "/app",
-    settings: "/settings"
+    settings: "/settings",
+    notes: "/note"
 }
 
 const cache_files = {
@@ -56,14 +57,17 @@ function is_valid_route(url, url_whitelist = []) {
 }
 
 self.addEventListener("fetch", function(event) {
+    const notes_url = new RegExp(`^${self.origin}${valid_routes.notes}/`, "gi");
+    const notes_param = new RegExp(`^${self.origin}${valid_routes.notes}/(.+)`, "i");
     console.log(`Fetching for: ${event.request.url} at ${event.request.mode}`);
     // checking if the request is for the HTML files
-    if ((event.request.mode === "navigate") && !is_valid_route(event.request.url, Object.values(valid_routes))) {
+    if (event.request.mode === "navigate" && notes_url.test(event.request.url) && Number(event.request.url.match(notes_param)[1])) {event.respondWith(caches.match(valid_routes.notes));}
+    else if ((event.request.mode === "navigate") && !is_valid_route(event.request.url, Object.values(valid_routes))) {
         event.respondWith(
             fetch(event.request)
             .catch(function(error) {
                 console.error(error);
-                return caches.match("/offline");
+                return caches.match(cache_files.offline);
             })
         )
     }
@@ -81,3 +85,6 @@ self.addEventListener("fetch", function(event) {
         );
     }
 });
+
+// offline routing
+

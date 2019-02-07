@@ -106,13 +106,14 @@ notes_instance.length().then(function (length) {
   }).catch(function (error) {
     console.error(error);
   });
-  const previous_notes_box = document.querySelector(".previous-notes-container");
+  const previous_notes_box = document.querySelector(".notes-collection");
 
   if (length > 1) {
     notes_instance.iterate(function (note_object, key, iteration_index) {
       if (iteration_index === length) return;
       const note_container = document.createElement("div");
       note_container.classList.add("note-container");
+      if (iteration_index === 1) note_container.classList.add("display");else note_container.classList.add("no-display");
       const note_date = document.createElement("div");
       note_date.classList.add("note-date");
       note_date.textContent = note_object.date.toDateString();
@@ -127,6 +128,30 @@ notes_instance.length().then(function (length) {
       note_container.appendChild(note_number_of_words);
       previous_notes_box.appendChild(note_container);
     });
+  }
+});
+const previous_note_button = document.querySelector(".previous-note-button");
+const next_note_button = document.querySelector(".next-note-button");
+previous_note_button.addEventListener("click", function (event) {
+  const notes_collection = document.querySelector(".notes-collection");
+  const rendered_note = document.querySelector(".note-container.display");
+
+  if (rendered_note.previousElementSibling) {
+    rendered_note.classList.remove("display");
+    rendered_note.classList.add("no-display");
+    rendered_note.previousElementSibling.classList.remove("no-display");
+    rendered_note.previousElementSibling.classList.add("display");
+  }
+});
+next_note_button.addEventListener("click", function (event) {
+  const notes_collection = document.querySelector(".notes-collection");
+  const rendered_note = document.querySelector(".note-container.display");
+
+  if (rendered_note.nextElementSibling) {
+    rendered_note.classList.remove("display");
+    rendered_note.classList.add("no-display");
+    rendered_note.nextElementSibling.classList.remove("no-display");
+    rendered_note.nextElementSibling.classList.add("display");
   }
 });
 const markdown_syntax = {
