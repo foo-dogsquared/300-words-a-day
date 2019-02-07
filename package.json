@@ -15,10 +15,11 @@
     "create:shell": "mkdirp public/js && mkdirp public/css && mkdirp public/img && mkdirp public/fonts",
     "scss:build": "sass ./src/style/main.scss ./public/css/main.css --no-source-map",
     "scss:watch": "sass --watch ./src/style/main.scss ./public/css/main.css --no-source-map",
-    "js:concat": "concat -o ./client_app.js ./src/client/constants.js ./src/client/date.js ./src/client/notes.js ./src/client/keyboard_events.js && concat -o ./public/js/render_notes.js ./src/client/constants.js ./src/client/render_notes.js",
+    "js:concat": "concat -o ./js_build/client_app.js ./src/client/constants.js ./src/client/date.js ./src/client/notes.js ./src/client/keyboard_events.js && concat -o ./js_build/render_notes.js ./src/client/constants.js ./src/client/render_notes.js",
     "js:watch": "sane \"npm run js:concat && npm run js:build\" --glob=src/client/*.js",
-    "js:build": "babel client_app.js --out-file ./public/js/main.js --no-comments",
-    "sw:build": "cp ./src/service_worker/service_worker_installer.js ./public/js/service_worker_installer.js && cp ./src/service_worker/service_worker.js ./public/service_worker.js"
+    "js:build": "node ./js_iife_build.js && babel ./final_js_build/client_app.iife.js --minified --out-file ./public/js/main.js --no-comments && babel ./final_js_build/render_notes.iife.js --minified --out-file ./public/js/render_notes.js --no-comments",
+    "sw:build": "cp ./src/service_worker/service_worker_installer.js ./public/js/service_worker_installer.js && cp ./src/service_worker/service_worker.js ./public/service_worker.js",
+    "sw:watch": "sane \"npm run sw:build\" --glob=src/service_worker/*.js"
   },
   "repository": {
     "type": "git",
